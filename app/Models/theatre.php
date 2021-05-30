@@ -11,4 +11,9 @@ class theatre extends Model
     public function movies(){
         return $this->belongsToMany('App\Models\movie','theatre_movies');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 }

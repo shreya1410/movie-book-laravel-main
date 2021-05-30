@@ -10,11 +10,16 @@ class movie extends Model
     use HasFactory;
     public function casts()
     {
-        return $this->belongsToMany('App\Models\cast','movie_casts');
+        return $this->belongsToMany('App\Models\cast','movie_casts')->withTimestamps();
     }
 
     public function theatre()
     {
-        return $this->belongsToMany('App\Models\theatre','theatre_movies');
+        return $this->belongsToMany('App\Models\theatre','theatre_movies')->withTimestamps();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'id';
     }
 }

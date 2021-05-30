@@ -27,6 +27,10 @@
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="{{asset('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
 
+@section('headSection')
+@show
+
+{{--<link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">--}}
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

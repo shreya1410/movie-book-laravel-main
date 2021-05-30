@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\cities;
+use App\Models\cast;
 use Illuminate\Http\Request;
 
-class CityController extends Controller
+class CastController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class CityController extends Controller
      */
     public function index()
     {
-       $city = cities::all();
-       return view('admin/city/show',compact('city'));
+       $casts = cast::all();
+       return view('admin/cast/show',compact('casts'));
     }
 
     /**
@@ -25,7 +25,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('admin/city/create');
+        return view('admin/cast/create');
     }
 
     /**
@@ -37,14 +37,18 @@ class CityController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'city_name' => 'required',
+            'name' => 'required',
+            'bio'=>'required',
+            'birth_date'=>'required',
 
         ]);
-        $cities = new cities();
-        $cities->city_name= $request->city_name;
-        $cities->save();
+        $casts = new cast;
+        $casts->name= $request->name;
+        $casts->bio = $request->bio;
+        $casts->date_of_birth = $request->birth_date;
+        $casts->save();
 
-        return redirect(route('city.index'));
+        return redirect(route('cast.index'));
     }
 
     /**
@@ -66,8 +70,8 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        $city = cities::where('id',$id)->first();
-        return view('admin/city/edit',compact('city'));
+        $cast = cast::where('id',$id)->first();
+        return view('admin/cast/edit',compact('cast'));
         return redirect('admin/home');
     }
 
@@ -81,14 +85,17 @@ class CityController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'city_name' => 'required',
-
+            'name' => 'required',
+            'bio'=>'required',
+            'date_of_birth'=>'required',
         ]);
-        $cities = cities::find($id);
-        $cities->city_name= $request->city_name;
-        $cities->save();
+        $casts = cast::find($id);
+        $casts->name= $request->name;
+        $casts->bio = $request->bio;
+        $casts->date_of_birth = $request->date_of_birth;
+        $casts->save();
 
-        return redirect(route('city.index'));
+        return redirect(route('cast.index'));
     }
 
     /**
@@ -99,7 +106,7 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        cities::where('id',$id)->delete();
+        cast::where('id',$id)->delete();
         return redirect()->back();
     }
 }

@@ -15,8 +15,9 @@ class CreateTheatreMoviesTable extends Migration
     {
         Schema::create('theatre_movies', function (Blueprint $table) {
             $table->id();
-            $table->integer('theatre_id');
-            $table->integer('movie_id');
+            $table->unsignedBigInteger('theatre_id');
+            $table->unsignedBigInteger('movie_id');
+            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
             $table->timestamps();
         });
     }

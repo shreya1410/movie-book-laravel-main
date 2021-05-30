@@ -14,9 +14,10 @@ class CreateMovieCastsTable extends Migration
     public function up()
     {
         Schema::create('movie_casts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('movie_id');
-            $table->integer('cast_id');
+            $table->id();
+            $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('cast_id');
+            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
             $table->timestamps();
         });
     }

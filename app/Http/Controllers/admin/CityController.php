@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\theatre;
+use App\Models\cities;
 use Illuminate\Http\Request;
 
-class TheatreController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TheatreController extends Controller
      */
     public function index()
     {
-       $theatres = theatre::all();
-       return view('admin/theatre/show',compact('theatres'));
+       $city = cities::all();
+       return view('admin/city/show',compact('city'));
     }
 
     /**
@@ -25,7 +25,7 @@ class TheatreController extends Controller
      */
     public function create()
     {
-        return view('admin/theatre/create');
+        return view('admin/city/create');
     }
 
     /**
@@ -37,16 +37,14 @@ class TheatreController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'theatre_name' => 'required',
-            'show_time'=>'required',
+            'city_name' => 'required',
 
         ]);
-        $theatres = new theatre;
-        $theatres->theater_name= $request->theatre_name;
-        $theatres->show_time = $request->show_time;
-        $theatres->save();
+        $cities = new cities();
+        $cities->city_name= $request->city_name;
+        $cities->save();
 
-        return redirect(route('theatre.index'));
+        return redirect(route('city.index'));
     }
 
     /**
@@ -68,8 +66,8 @@ class TheatreController extends Controller
      */
     public function edit($id)
     {
-        $theatres = theatre::where('id',$id)->first();
-        return view('admin/theatre/edit',compact('theatres'));
+        $city = cities::where('id',$id)->first();
+        return view('admin/city/edit',compact('city'));
         return redirect('admin/home');
     }
 
@@ -83,15 +81,14 @@ class TheatreController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'theatre_name' => 'required',
-            'show_time'=>'required',
-        ]);
-        $theatres = theatre::find($id);
-        $theatres->theater_name= $request->theatre_name;
-        $theatres->show_time = $request->show_time;
-        $theatres->save();
+            'city_name' => 'required',
 
-        return redirect(route('theatre.index'));
+        ]);
+        $cities = cities::find($id);
+        $cities->city_name= $request->city_name;
+        $cities->save();
+
+        return redirect(route('city.index'));
     }
 
     /**
@@ -102,7 +99,7 @@ class TheatreController extends Controller
      */
     public function destroy($id)
     {
-        theatre::where('id',$id)->delete();
+        cities::where('id',$id)->delete();
         return redirect()->back();
     }
 }

@@ -9,7 +9,8 @@
     @include('admin/layouts/sidebar')
     @section('main-content')
     @show
-{{--    @include('admin/layouts/footer')--}}
+
+    @include('admin/layouts/footer')
 </div>
 </body>
 </html>

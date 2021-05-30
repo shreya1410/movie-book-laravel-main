@@ -53,7 +53,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="birth date">Release Year</label>
+                                    <label for="birth date">Birth Date</label>
                                     <input type="date" class="form-control" id="birth_date" name="birth_date" placeholder="birth date">
                                 </div>
 

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\cast;
+use App\Models\movie;
+use App\Models\theatre;
 use Illuminate\Http\Request;
 
-class CastController extends Controller
+class movieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class CastController extends Controller
      */
     public function index()
     {
-       $casts = cast::all();
-       return view('admin/cast/show',compact('casts'));
+        $movies = movie::all();
+        return view('admin/Movies/show',compact('movies'));
     }
 
     /**
@@ -25,7 +27,9 @@ class CastController extends Controller
      */
     public function create()
     {
-        return view('admin/cast/create');
+        $casts = cast::all();
+        $theatres = theatre::all();
+        return view('admin/Movies/create',compact('casts','theatres'));
     }
 
     /**
@@ -37,18 +41,20 @@ class CastController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'bio'=>'required',
-            'birth_date'=>'required',
+           'title'  => 'required',
+            'overview' =>'required',
+            'release_year' => 'required',
 
         ]);
-        $casts = new cast;
-        $casts->name= $request->name;
-        $casts->bio = $request->bio;
-        $casts->date_of_birth = $request->birth_date;
-        $casts->save();
+        $movie = new movie;
+        $movie->title = $request->title;
+        $movie->overview = $request->overview;
+        $movie->release_year = $request->release_year;
+        $movie->save();
+        $movie->casts()->sync($request->cast);
+        $movie->theatre()->sync($request->theatre);
 
-        return redirect(route('cast.index'));
+        return redirect(route('movie.index'));
     }
 
     /**
@@ -70,8 +76,10 @@ class CastController extends Controller
      */
     public function edit($id)
     {
-        $cast = cast::where('id',$id)->first();
-        return view('admin/cast/edit',compact('cast'));
+        $movie = movie::with('casts')->where('id',$id)->first();
+        $casts = cast::all();
+        $theatres = theatre::all();
+        return view('admin/Movies/edit',compact('casts','theatres','movie'));
         return redirect('admin/home');
     }
 
@@ -85,17 +93,21 @@ class CastController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'bio'=>'required',
-            'date_of_birth'=>'required',
-        ]);
-        $casts = cast::find($id);
-        $casts->name= $request->name;
-        $casts->bio = $request->bio;
-        $casts->date_of_birth = $request->date_of_birth;
-        $casts->save();
+            'title'  => 'required',
+            'overview' =>'required',
+            'release_year' => 'required',
 
-        return redirect(route('cast.index'));
+        ]);
+
+        $movie = movie::find($id);
+        $movie->title = $request->title;
+        $movie->overview = $request->overview;
+        $movie->release_year = $request->release_year;
+        $movie->casts()->sync($request->cast);
+        $movie->theatre()->sync($request->theatre);
+        $movie->save();
+
+        return redirect(route('movie.index'));
     }
 
     /**
@@ -106,7 +118,7 @@ class CastController extends Controller
      */
     public function destroy($id)
     {
-        cast::where('id',$id)->delete();
+        movie::where('id',$id)->delete();
         return redirect()->back();
     }
 }

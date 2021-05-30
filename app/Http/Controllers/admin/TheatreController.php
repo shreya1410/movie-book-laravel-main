@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\movie;
+use App\Models\theatre;
 use Illuminate\Http\Request;
 
-class movieController extends Controller
+class TheatreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class movieController extends Controller
      */
     public function index()
     {
-        $movies = movie::all();
-        return view('admin/Movies/show',compact('movies'));
+       $theatres = theatre::all();
+       return view('admin/theatre/show',compact('theatres'));
     }
 
     /**
@@ -25,7 +25,7 @@ class movieController extends Controller
      */
     public function create()
     {
-        return view('admin/Movies/create');
+        return view('admin/theatre/create');
     }
 
     /**
@@ -37,18 +37,16 @@ class movieController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-           'title'  => 'required',
-            'overview' =>'required',
-            'release_year' => 'required',
+            'theatre_name' => 'required',
+            'show_time'=>'required',
 
         ]);
-        $movie = new movie;
-        $movie->title = $request->title;
-        $movie->overview = $request->overview;
-        $movie->release_year = $request->release_year;
-        $movie->save();
+        $theatres = new theatre;
+        $theatres->theater_name= $request->theatre_name;
+        $theatres->show_time = $request->show_time;
+        $theatres->save();
 
-        return redirect(route('movie.index'));
+        return redirect(route('theatre.index'));
     }
 
     /**
@@ -70,8 +68,8 @@ class movieController extends Controller
      */
     public function edit($id)
     {
-        $movie = movie::where('id',$id)->first();
-        return view('admin/Movies/edit',compact('movie'));
+        $theatres = theatre::where('id',$id)->first();
+        return view('admin/theatre/edit',compact('theatres'));
         return redirect('admin/home');
     }
 
@@ -85,19 +83,15 @@ class movieController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title'  => 'required',
-            'overview' =>'required',
-            'release_year' => 'required',
-
+            'theatre_name' => 'required',
+            'show_time'=>'required',
         ]);
+        $theatres = theatre::find($id);
+        $theatres->theater_name= $request->theatre_name;
+        $theatres->show_time = $request->show_time;
+        $theatres->save();
 
-        $movie = movie::find($id);
-        $movie->title = $request->title;
-        $movie->overview = $request->overview;
-        $movie->release_year = $request->release_year;
-        $movie->save();
-
-        return redirect(route('movie.index'));
+        return redirect(route('theatre.index'));
     }
 
     /**
@@ -108,7 +102,7 @@ class movieController extends Controller
      */
     public function destroy($id)
     {
-        movie::where('id',$id)->delete();
+        theatre::where('id',$id)->delete();
         return redirect()->back();
     }
 }

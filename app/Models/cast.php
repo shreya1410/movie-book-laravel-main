@@ -9,6 +9,11 @@ class cast extends Model
 {
     use HasFactory;
     public function movies(){
-        return $this->belongsToMany('App\Models\movie','movie_casts');
+        return $this->belongsToMany('App\Models\movie','movie_casts')->paginate(5);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'id';
     }
 }

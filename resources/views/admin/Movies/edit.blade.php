@@ -1,7 +1,8 @@
 @extends('admin/layouts/app')
 
 @section('headSection')
-    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 @endsection
@@ -65,15 +66,37 @@
 
                                 <div class="form-group">
                                     <label>Multiple</label>
-                                    <select class="select2" multiple="multiple"
-                                            data-placeholder="Select a State" style="width: 100%;">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
+                                    <select name="cast[]" class=" form-control select2 select2-hidden-accessible" multiple=""
+                                            data-placeholder="Select a Cast" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        @foreach($casts as $cast)
+                                            <option value="{{$cast->id}}"
+                                                @foreach($movie->casts as $moviecast)
+                                                    @if($moviecast->id == $cast->id)
+                                                        selected
+                                                    @endif
+                                                    @endforeach
+
+                                            >{{$cast->name}}</option>
+                                        @endforeach
                                     </select>
-                                         </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Multiple</label>
+                                    <select name="theatre[]" class=" form-control select2 select2-hidden-accessible" multiple=""
+                                            data-placeholder="Select a Cast" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        @foreach($theatres as $theatre)
+                                            <option value="{{$theatre->id}}"
+                                                    @foreach($movie->theatre as $movietheatre)
+                                                    @if($movietheatre->id == $theatre->id)
+                                                    selected
+                                                @endif
+                                                @endforeach
+
+                                            >{{$theatre->theater_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                             </div>
 
@@ -95,7 +118,7 @@
 @endsection
 
 @section('footerSection')
-    <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+    <script src="{{asset('admin/plugins/select2/sel.js')}}"></script>
     <script>
         $(document).ready(function (){
             $(".select2").select2();

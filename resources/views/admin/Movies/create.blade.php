@@ -1,6 +1,7 @@
 @extends('admin/layouts/app')
 @section('headSection')
-    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+    {{--    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 @endsection
@@ -57,6 +58,28 @@
                                     <input type="number" class="form-control" id="year" name="release_year" placeholder="Release Year">
                                 </div>
 
+                                <div class="form-group">
+                                    <label>Multiple</label>
+                                    <select  name="cast[]" class=" form-control select2 select2-hidden-accessible" multiple=""
+                                            data-placeholder="Select a Cast" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                      @foreach($casts as $cast)
+                                          <option value="{{$cast->id}}">{{$cast->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Multiple</label>
+                                    <select  name="theatre[]" class=" form-control select2 select2-hidden-accessible" multiple=""
+                                             data-placeholder="Select a Theatre" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        @foreach($theatres as $theatre)
+                                            <option value="{{$theatre->id}}">{{$theatre->theater_name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
                             </div>
                             <!-- /.card-body -->
 
@@ -76,12 +99,12 @@
         <!-- /.content -->
     </div>
 @endsection
+
 @section('footerSection')
-    <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+    <script src="{{asset('admin/plugins/select2/sel.js')}}"></script>
     <script>
         $(document).ready(function (){
             $(".select2").select2();
         });
-
     </script>
 @endsection
