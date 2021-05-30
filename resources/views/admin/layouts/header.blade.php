@@ -36,21 +36,20 @@
 {{--                <li class="user-header bg-primary">--}}
 {{--                    <p>--}}
 {{--                        {{Auth::user()->name}} - Web Developer--}}
-{{--                        <small>Member since   {{Auth::user()->created_at->toFormattedDateString()}}</small>--}}
 {{--                    </p>--}}
 {{--                </li>--}}
-{{--                <li class="user-footer">--}}
-{{--                    <a href="#" class="btn btn-default btn-flat">Profile</a>--}}
-{{--                    <a href="{{ route('logout') }}"--}}
-{{--                       onclick="event.preventDefault();--}}
-{{--                                   document.getElementById('logout-form').submit();" class="btn btn-default btn-flat float-right">--}}
-{{--                        Logout--}}
-{{--                    </a>--}}
-{{--                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-{{--                        {{ csrf_field() }}--}}
-{{--                    </form>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
+                <li class="user-footer">
+                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();" class="btn btn-default btn-flat float-right">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            </ul>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">

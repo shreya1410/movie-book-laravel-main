@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 
 use App\Models\cast;
 use App\Models\movie;
@@ -9,6 +10,15 @@ use Illuminate\Http\Request;
 
 class movieController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      *

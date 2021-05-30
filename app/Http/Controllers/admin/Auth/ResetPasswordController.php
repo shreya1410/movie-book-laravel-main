@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin\Auth;
-
-use App\Http\Controllers\admin\Controller;
+use App\Http\Controllers\Controller;
+//use App\Http\Controllers\admin\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
