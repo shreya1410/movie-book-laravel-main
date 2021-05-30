@@ -17,6 +17,8 @@ Route::get('/', [HomeController::class,'index']);
 
 Route::get('post/{id}',[MoviedisplayController::class,'post'])->name('post');
 
+Route::get('theater/{id}',[MoviedisplayController::class,'theater'])->name('theater');
+
 Route::get('post/cast/{id}',[HomeController::class,'casts'])->name('cast');
 
 //Route::get('post/theatre/{theatre}',[HomeController::class,'theatre'])->name('theatre');
