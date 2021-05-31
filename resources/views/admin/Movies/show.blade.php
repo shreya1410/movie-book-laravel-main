@@ -78,12 +78,7 @@
                                         <td>{{$film->overview}}</td>
                                         <td>{{$film->release_year}}</td>
                                         <td><a href ="{{route('movie.edit',$film->id)}}"> Edit</td>
-{{--                                            <td><a href="{{route('movies.edit',$film->id)}}"> Update--}}
-{{--                                                    <i class="far fa-edit"></i></a></td>--}}
-
-
-
-                                           <td>
+                                        <td>
                                                 <form id="delete-form-{{$film->id}}"
                                                       method="post"
                                                       action="{{route('movie.destroy',$film->id)}}"

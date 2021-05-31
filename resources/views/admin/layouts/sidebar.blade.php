@@ -34,6 +34,8 @@
                     <li class="active"><a  href="{{route('movie.index')}}"><i class="fa fa-circle-o"></i>Movies</a></li>
                     <li><a href="{{route('cast.index')}}"><i class="fa fa-circle-o"></i> Casts</a></li>
                     <li><a href="{{route('theatre.index')}}"><i class="fa fa-circle-o"></i> Theatre</a></li>
+
+
                     <li><a href="{{route('city.index')}}"><i class="fa fa-circle-o"></i> City</a></li>
                 </ul>
             </li>

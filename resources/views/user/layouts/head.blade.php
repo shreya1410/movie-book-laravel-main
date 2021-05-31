@@ -3,7 +3,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Shreya's blogpost</title>
+<title>BookMyShow</title>
 
 <!-- Bootstrap core CSS -->
 

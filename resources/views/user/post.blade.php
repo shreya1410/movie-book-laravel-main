@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Theatre Name :{{$theater->theater_name}}</h5>
                             <p class="card-text">Show Timing : {{$theater->show_time}}</p>
-                      
+
                             <a href="{{route('theater',$theater->id)}}">Book show</a>
 {{--                            <button><a href ="screens.blade.php"> book show</a></button>--}}
                         </div>
