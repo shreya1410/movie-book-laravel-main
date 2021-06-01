@@ -46,7 +46,7 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="name">Post Title</label>
+                                    <label for="name">Theater name</label>
                                     <input type="text" class="form-control" id="theatre_name" name="theatre_name" placeholder="theatre_name"
                                            value="{{$theatres->theater_name}}">
                                 </div>

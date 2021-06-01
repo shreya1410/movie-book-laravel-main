@@ -5,6 +5,8 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\admin\CastController;
 use App\Http\Controllers\admin\movieController;
 use App\Http\Controllers\admin\TheatreController;
+use App\Http\Controllers\admin\SeatController;
+use App\Http\Controllers\User\SeatDisplayController;
 use App\Http\Controllers\admin\CityController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +20,9 @@ Route::get('/', [HomeController::class,'index']);
 Route::get('post/{id}',[MoviedisplayController::class,'post'])->name('post');
 
 Route::get('theater/{id}',[MoviedisplayController::class,'theater'])->name('theater');
+
+Route::get('seats',[SeatDisplayController::class,'showseat'])->name('showseat');
+
 
 Route::get('post/cast/{id}',[HomeController::class,'casts'])->name('cast');
 
@@ -33,6 +38,7 @@ Route::post('admin-login',[LoginController::class,'login']);
 Route::resource('admin/movie',movieController::class);
 Route::resource('admin/cast',CastController::class);
 Route::resource('admin/theatre',TheatreController::class);
+Route::resource('admin/seats',SeatController::class);
 Route::resource('admin/city',CityController::class);
 
 Auth::routes();

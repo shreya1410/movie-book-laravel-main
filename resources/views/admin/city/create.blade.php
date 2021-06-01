@@ -1,5 +1,3 @@
-// theatre nu create
-
 
 
 @extends('admin/layouts/app')

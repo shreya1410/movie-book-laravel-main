@@ -46,7 +46,7 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="name">Post Title</label>
+                                    <label for="name">Cast name</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Name"
                                            value="{{$cast->name}}">
                                 </div>

@@ -21,7 +21,7 @@
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="home" class="nav-link">Home</a>
+                            <li class="breadcrumb-item"<a href="home" class="nav-link">Home</a>
 
                         </ol>
                     </div>
@@ -39,7 +39,7 @@
 
 
                     <div class="text-center">
-                        <a class='col-lg-offset-5 btn btn-success' href="{{route('city.create')}}"> Add New City</a>
+                        <a class='col-lg-offset-5 btn btn-success' href="{{route('seats.create')}}"> Add New Seat</a>
                     </div>
 
                     <div class="card-tools">
@@ -62,23 +62,25 @@
                                 <thead>
                                 <tr>
                                     <th>Sr. No</th>
-                                    <th>City Name</th>
+                                    <th>Seat Number</th>
+                                    <th>Seat Price</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($city as $city)
+                                @foreach($seats as $seat)
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
-                                        <td>{{$city->city_name}}</td>
-                                        <td><a href ="{{route('city.edit',$city->id)}}"> Edit</td>
+                                        <td>{{$seat->seat_number}}</td>
+                                        <td>{{$seat->seat_price}}</td>
+                                        <td><a href ="{{route('seats.edit',$seat->id)}}"> Edit</td>
 
                                         <td>
-                                            <form id="delete-form-{{$city->id}}"
+                                            <form id="delete-form-{{$seat->id}}"
                                                   method="post"
-                                                  action="{{route('city.destroy',$city->id)}}"
+                                                  action="{{route('seats.destroy',$seat->id)}}"
                                                   style="display: none">
                                                 {{csrf_field()}}
                                                 {{method_field('DELETE')}}
@@ -86,7 +88,7 @@
                                             <a href=""  onclick="if(confirm('ARE YOU SURE ,YOU WANT TO DELETE THIS?'))
                                                 {
                                                 event.preventDefault();
-                                                document.getElementById('delete-form-{{$city->id}}').submit();
+                                                document.getElementById('delete-form-{{$seat->id}}').submit();
                                                 }else
                                                 {
                                                 event.preventDefault();

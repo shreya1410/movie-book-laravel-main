@@ -40,18 +40,17 @@
                             <p class="alert-default-success">{{session('message')}}</p>
                         @endif
 
-                        <form role="form" action="{{route('theatre.store')}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{route('seats.store')}}" method="post" enctype="multipart/form-data">
 
                             {{csrf_field()}}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Theatre Name</label>
-                                    <input type="text" class="form-control" id="theatre_name" name="theatre_name" placeholder="Name">
+                                    <label for="name">Seat Name</label>
+                                    <input type="text" class="form-control" id="seat_number" name="seat_number" placeholder="seat number">
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="show_time">show time</label>
-                                    <input type="text" class="form-control" id="show_time" name="show_time" placeholder="show_time">
+                                    <label for="name">Seat Price</label>
+                                    <input type="text" class="form-control" id="seat_price" name="seat_price" placeholder="seat price">
                                 </div>
 
                             </div>
@@ -59,7 +58,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a type="button"  href="{{route('theatre.index')}}" class="btn btn-warning">Back</a>
+                                <a type="button"  href="{{route('seats.index')}}" class="btn btn-warning">Back</a>
                             </div>
                         </form>
                     </div>

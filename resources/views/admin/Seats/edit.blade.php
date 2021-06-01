@@ -1,6 +1,5 @@
-
-
 @extends('admin/layouts/app')
+
 @section('headSection')
     <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
 
@@ -29,6 +28,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Titles</h3>
                         </div>
+
                         @if(count($errors) >0)
                             @foreach($errors->all() as $error)
                                 <p class="alert alert-danger">{{$error}}</p>
@@ -39,27 +39,27 @@
                         @if (session()->has('message'))
                             <p class="alert-default-success">{{session('message')}}</p>
                         @endif
-
-                        <form role="form" action="{{route('theatre.store')}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{route('seats.update',$seat->id)}}" method="post" enctype="multipart/form-data">
 
                             {{csrf_field()}}
+                            {{method_field('PATCH')}}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Theatre Name</label>
-                                    <input type="text" class="form-control" id="theatre_name" name="theatre_name" placeholder="Name">
+                                    <label for="name"> Seat Number</label>
+                                    <input type="text" class="form-control" id="seat_number" name="seat_number" placeholder="seat_number"
+                                           value="{{$seat->seat_number}}">
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="show_time">show time</label>
-                                    <input type="text" class="form-control" id="show_time" name="show_time" placeholder="show_time">
+                                    <label for="name">Seat Price</label>
+                                    <input type="text" class="form-control" id="seat_price" name="seat_price" placeholder="seat_price"
+                                           value="{{$seat->seat_price}}">
                                 </div>
 
                             </div>
-                            <!-- /.card-body -->
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a type="button"  href="{{route('theatre.index')}}" class="btn btn-warning">Back</a>
+                                <a type="button"  href="{{route('seats.index')}}" class="btn btn-warning">Back</a>
                             </div>
                         </form>
                     </div>
@@ -73,12 +73,12 @@
         <!-- /.content -->
     </div>
 @endsection
+
 @section('footerSection')
     <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
         $(document).ready(function (){
             $(".select2").select2();
         });
-
     </script>
 @endsection

@@ -47,7 +47,7 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="title">Post Title</label>
+                                    <label for="title">Movie name</label>
                                     <input type="text" class="form-control" id="title" name="title" placeholder="Title"
                                            value="{{$movie->title}}">
                                 </div>
@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Multiple</label>
+                                    <label>Cast</label>
                                     <select name="cast[]" class=" form-control select2 select2-hidden-accessible" multiple=""
                                             data-placeholder="Select a Cast" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                         @foreach($casts as $cast)
@@ -82,7 +82,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Multiple</label>
+                                    <label>Theater</label>
                                     <select name="theatre[]" class=" form-control select2 select2-hidden-accessible" multiple=""
                                             data-placeholder="Select a Cast" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                         @foreach($theatres as $theatre)
