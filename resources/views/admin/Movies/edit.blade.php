@@ -1,7 +1,6 @@
 @extends('admin/layouts/app')
 
 @section('headSection')
-{{--    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">--}}
     <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h4>Welcome to Bookmyshow</h4>
+                    <h4>Welcome to BookMyShow</h4>
                 </div>
             </div>
         </div>

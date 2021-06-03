@@ -21,7 +21,7 @@ Route::get('post/{id}',[MoviedisplayController::class,'post'])->name('post');
 
 Route::get('theater/{id}',[MoviedisplayController::class,'theater'])->name('theater');
 
-Route::get('book/bookticket/{theatre}',[BookTicketsController::class,'bookmyticket'])->name('bookmyticket');
+Route::post('book/bookticket/{theatre}',[BookTicketsController::class,'bookmyticket'])->name('bookmyticket');
 
 Route::get('post/cast/{id}',[HomeController::class,'casts'])->name('cast');
 

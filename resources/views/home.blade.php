@@ -1,20 +1,13 @@
-
-
-
-
 @extends('user/app')
-
-
 @section('main-content')
 
     <article>
         <div class="container">
             <div class="row">
-               Welcome to bookmyshow
+               Welcome to bookMyShow
             </div>
         </div>
     </article>
-
 
 @endsection
 

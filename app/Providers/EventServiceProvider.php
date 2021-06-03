@@ -10,8 +10,10 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\RegisteredUserMail;
 use App\Events\LoginHistory;
+use App\Events\BookTicketMail;
 use App\Listener\SentRegisteredUserMailListener;
 use App\Listener\storeUserLoginHistory;
+use App\Listener\SentBookedTicketMailListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -30,6 +32,9 @@ class EventServiceProvider extends ServiceProvider
         LoginHistory::class=>[
             storeUserLoginHistory::class,
         ],
+        BookTicketMail::class=>[
+            SentBookedTicketMailListener::class
+        ]
     ];
 
     /**

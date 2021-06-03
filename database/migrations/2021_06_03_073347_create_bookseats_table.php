@@ -14,9 +14,10 @@ class CreateBookseatsTable extends Migration
     public function up()
     {
         Schema::create('bookseats', function (Blueprint $table) {
-            $table->increments('booking_id');
+            $table->id();
             $table->integer('user_id');
             $table->integer('theatre_id');
+            $table->json('seat_id');
             $table->timestamps();
         });
     }

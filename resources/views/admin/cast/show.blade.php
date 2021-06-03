@@ -78,10 +78,6 @@
                                         <td>{{$cast->bio}}</td>
                                         <td>{{$cast->date_of_birth}}</td>
                                         <td><a href ="{{route('cast.edit',$cast->id)}}"> Edit</td>
-                                        {{--                                            <td><a href="{{route('movies.edit',$film->id)}}"> Update--}}
-                                        {{--                                                    <i class="far fa-edit"></i></a></td>--}}
-
-
 
                                         <td>
                                             <form id="delete-form-{{$cast->id}}"
