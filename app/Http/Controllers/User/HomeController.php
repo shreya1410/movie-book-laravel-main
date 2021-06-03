@@ -14,9 +14,6 @@ class HomeController extends Controller
         return view('user.home',compact('posts'));
     }
 
-    public function theatre(){
-
-    }
     public function casts(cast $id){
        $posts =$id->movies();
         return view('user.home',compact('posts'));

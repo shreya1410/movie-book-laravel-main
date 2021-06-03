@@ -9,7 +9,6 @@
 
                     <div class="card">
                        Movie Title : {{$id->title}}
-
                         @foreach($id->casts as $cast)
                         <div class="card-body">
                             <a href="{{route('cast',$cast->id)}}">
@@ -18,19 +17,16 @@
                             <p class="card-text"> Bio Of Cast : {{$cast->bio}}</p>
                         </div>
                         @endforeach
+
                         @foreach($id->theatre as $theater)
                         <div class="card-body">
                             <h5 class="card-title">Theatre Name :{{$theater->theater_name}}</h5>
                             <p class="card-text">Show Timing : {{$theater->show_time}}</p>
-
                             <a href="{{route('theater',$theater->id)}}">Book show</a>
-{{--                            <button><a href ="screens.blade.php"> book show</a></button>--}}
                         </div>
                         @endforeach
                     </div>
                 </div>
-        </div>
-        </div>
         </div>
     </article>
 

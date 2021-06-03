@@ -15,7 +15,6 @@ class MoviedisplayController extends Controller
 
         public function theater(movie $id){
             $seats = seats::all();
-        //    return view('user.test',compact('seats'));
             return view('user.screens',compact('id','seats'));
         }
 

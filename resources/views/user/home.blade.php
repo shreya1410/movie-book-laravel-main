@@ -2,7 +2,6 @@
 @section('main-content')
 
     <div class="container">
-
         <div class="row">
             <div class="form-group">
                 <input type="text" name="search" id="search" placeholder="Search movie" required/>

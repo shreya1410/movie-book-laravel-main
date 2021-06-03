@@ -6,7 +6,7 @@ use App\Http\Controllers\admin\CastController;
 use App\Http\Controllers\admin\movieController;
 use App\Http\Controllers\admin\TheatreController;
 use App\Http\Controllers\admin\SeatController;
-use App\Http\Controllers\User\SeatDisplayController;
+use App\Http\Controllers\User\BookTicketsController;
 use App\Http\Controllers\admin\CityController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,12 +21,11 @@ Route::get('post/{id}',[MoviedisplayController::class,'post'])->name('post');
 
 Route::get('theater/{id}',[MoviedisplayController::class,'theater'])->name('theater');
 
-Route::get('seats',[SeatDisplayController::class,'showseat'])->name('showseat');
-
+Route::get('book/bookticket/{theatre}',[BookTicketsController::class,'bookmyticket'])->name('bookmyticket');
 
 Route::get('post/cast/{id}',[HomeController::class,'casts'])->name('cast');
 
-//Route::get('post/theatre/{theatre}',[HomeController::class,'theatre'])->name('theatre');
+
 
 
 Route::get('admin/home',function (){
