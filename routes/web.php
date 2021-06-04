@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 
 
 
-Route::get('/', [HomeController::class,'index']);
+Route::get('/', [HomeController::class,'index'])->middleware('auth');
 
 Route::get('post/{id}',[MoviedisplayController::class,'post'])->name('post');
 
